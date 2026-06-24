@@ -5,8 +5,11 @@ import Navbar from "../components/Navbar";
 import LeadTable from "../components/LeadTable";
 
 import {
+
   getLeads,
+
   exportExcel,
+
 } from "../services/api";
 
 export default function Dashboard() {
@@ -47,19 +50,25 @@ export default function Dashboard() {
 
   const newLeads = leads.filter(
 
-    lead => lead.status === "New"
+    (lead) =>
+
+      lead.status === "New"
 
   ).length;
 
   const contactedLeads = leads.filter(
 
-    lead => lead.status === "Contacted"
+    (lead) =>
+
+      lead.status === "Contacted"
 
   ).length;
 
   const convertedLeads = leads.filter(
 
-    lead => lead.status === "Converted"
+    (lead) =>
+
+      lead.status === "Converted"
 
   ).length;
 
@@ -91,7 +100,7 @@ export default function Dashboard() {
 
           margin:"auto",
 
-          padding:"20px",
+          padding:"15px",
 
         }}
 
@@ -103,7 +112,9 @@ export default function Dashboard() {
 
             textAlign:"center",
 
-            fontSize:"clamp(28px,5vw,48px)",
+            fontSize:"clamp(30px,5vw,48px)",
+
+            lineHeight:"1.1",
 
             marginBottom:"25px",
 
@@ -119,13 +130,13 @@ export default function Dashboard() {
 
           style={{
 
-            display:"flex",
+            display:"grid",
 
-            flexWrap:"wrap",
+            gridTemplateColumns:
 
-            gap:"25px",
+            "repeat(auto-fit,minmax(280px,1fr))",
 
-            justifyContent:"space-between",
+            gap:"20px",
 
             alignItems:"center",
 
@@ -133,13 +144,13 @@ export default function Dashboard() {
 
             "linear-gradient(135deg,#2563eb,#9333ea)",
 
-            borderRadius:"25px",
+            padding:"20px",
 
-            padding:"25px",
+            borderRadius:"25px",
 
             color:"#fff",
 
-            marginBottom:"35px",
+            marginBottom:"30px",
 
           }}
 
@@ -149,9 +160,7 @@ export default function Dashboard() {
 
             style={{
 
-              flex:"1",
-
-              minWidth:"250px",
+              textAlign:"center",
 
             }}
 
@@ -195,7 +204,9 @@ export default function Dashboard() {
 
               maxWidth:"350px",
 
-              borderRadius:"25px",
+              margin:"auto",
+
+              borderRadius:"20px",
 
             }}
 
@@ -211,9 +222,9 @@ export default function Dashboard() {
 
             gridTemplateColumns:
 
-            "repeat(auto-fit,minmax(220px,1fr))",
+            "repeat(auto-fit,minmax(150px,1fr))",
 
-            gap:"20px",
+            gap:"15px",
 
           }}
 
@@ -221,33 +232,65 @@ export default function Dashboard() {
 
           <div style={cardStyle}>
 
-            <h3>📋 Total Leads</h3>
+            <h3>
 
-            <h1>{totalLeads}</h1>
+              📋 Total Leads
 
-          </div>
+            </h3>
 
-          <div style={cardStyle}>
+            <h1>
 
-            <h3>🆕 New Leads</h3>
+              {totalLeads}
 
-            <h1>{newLeads}</h1>
-
-          </div>
-
-          <div style={cardStyle}>
-
-            <h3>📞 Contacted</h3>
-
-            <h1>{contactedLeads}</h1>
+            </h1>
 
           </div>
 
           <div style={cardStyle}>
 
-            <h3>🎯 Converted</h3>
+            <h3>
 
-            <h1>{convertedLeads}</h1>
+              🆕 New Leads
+
+            </h3>
+
+            <h1>
+
+              {newLeads}
+
+            </h1>
+
+          </div>
+
+          <div style={cardStyle}>
+
+            <h3>
+
+              📞 Contacted
+
+            </h3>
+
+            <h1>
+
+              {contactedLeads}
+
+            </h1>
+
+          </div>
+
+          <div style={cardStyle}>
+
+            <h3>
+
+              🎯 Converted
+
+            </h3>
+
+            <h1>
+
+              {convertedLeads}
+
+            </h1>
 
           </div>
 
@@ -329,14 +372,22 @@ const cardStyle = {
 
   background:"#fff",
 
-  padding:"25px",
+  padding:"20px",
 
-  borderRadius:"25px",
+  minHeight:"160px",
+
+  borderRadius:"20px",
 
   textAlign:"center",
 
+  display:"flex",
+
+  flexDirection:"column",
+
+  justifyContent:"center",
+
   boxShadow:
 
-  "0 15px 30px rgba(0,0,0,0.15)",
+  "0 10px 25px rgba(0,0,0,0.15)",
 
 };
