@@ -24,7 +24,6 @@ export default function AddLead() {
 
   });
 
-
   const handleChange = (e) => {
 
     setLead({
@@ -37,7 +36,6 @@ export default function AddLead() {
 
   };
 
-
   const handleSubmit = async (e) => {
 
     e.preventDefault();
@@ -46,11 +44,7 @@ export default function AddLead() {
 
       await addLead(lead);
 
-      alert(
-
-        "Lead Added Successfully"
-
-      );
+      alert("Lead Added Successfully");
 
       navigate("/dashboard");
 
@@ -58,11 +52,7 @@ export default function AddLead() {
 
     catch (error) {
 
-      alert(
-
-        "Unable to save lead"
-
-      );
+      alert("Unable to save lead");
 
       console.log(error);
 
@@ -70,18 +60,17 @@ export default function AddLead() {
 
   };
 
-
   return (
 
     <div
 
       style={{
 
-        minHeight: "100vh",
+        minHeight:"100vh",
 
-        background: "#f3f4f6",
+        background:"#f3f4f6",
 
-        padding: "40px",
+        padding:"20px",
 
       }}
 
@@ -91,38 +80,45 @@ export default function AddLead() {
 
         style={{
 
-          maxWidth: "700px",
+          width:"100%",
 
-          margin: "auto",
+          maxWidth:"700px",
 
-          background: "#fff",
+          margin:"auto",
 
-          padding: "35px",
+          background:"#fff",
 
-          borderRadius: "20px",
+          padding:"25px",
+
+          borderRadius:"20px",
 
           boxShadow:
 
-            "0 10px 25px rgba(0,0,0,0.1)",
+          "0 10px 25px rgba(0,0,0,0.1)",
 
         }}
 
       >
 
-        <h1>
+        <h1
 
-          Add New Lead
+          style={{
+
+            textAlign:"center",
+
+            fontSize:"clamp(28px,4vw,40px)",
+
+            marginBottom:"25px",
+
+          }}
+
+        >
+
+          ➕ Add New Lead
 
         </h1>
 
-        <br />
-
-
-        <form
-
-          onSubmit={handleSubmit}
-
-        >
+        <form onSubmit={handleSubmit}>
 
           <input
 
@@ -137,7 +133,6 @@ export default function AddLead() {
             style={inputStyle}
 
           />
-
 
           <input
 
@@ -155,7 +150,6 @@ export default function AddLead() {
 
           />
 
-
           <input
 
             name="phone"
@@ -169,7 +163,6 @@ export default function AddLead() {
             style={inputStyle}
 
           />
-
 
           <input
 
@@ -185,7 +178,6 @@ export default function AddLead() {
 
           />
 
-
           <select
 
             name="status"
@@ -196,26 +188,13 @@ export default function AddLead() {
 
           >
 
-            <option>
+            <option>New</option>
 
-              New
+            <option>Contacted</option>
 
-            </option>
-
-            <option>
-
-              Contacted
-
-            </option>
-
-            <option>
-
-              Converted
-
-            </option>
+            <option>Converted</option>
 
           </select>
-
 
           <textarea
 
@@ -231,14 +210,13 @@ export default function AddLead() {
 
           />
 
-
           <button
 
             style={buttonStyle}
 
           >
 
-            Save Lead
+            💾 Save Lead
 
           </button>
 
@@ -252,38 +230,40 @@ export default function AddLead() {
 
 }
 
-
 const inputStyle = {
 
-  width: "100%",
+  width:"100%",
 
-  padding: "14px",
+  padding:"14px",
 
-  marginBottom: "18px",
+  marginBottom:"18px",
 
-  borderRadius: "10px",
+  borderRadius:"10px",
 
-  border: "1px solid #ccc",
+  border:"1px solid #ccc",
+
+  fontSize:"16px",
+
+  boxSizing:"border-box",
 
 };
 
-
 const buttonStyle = {
 
-  width: "100%",
+  width:"100%",
 
-  padding: "15px",
+  padding:"15px",
 
-  background: "#2563eb",
+  background:"#2563eb",
 
-  color: "#fff",
+  color:"#fff",
 
-  border: "none",
+  border:"none",
 
-  borderRadius: "10px",
+  borderRadius:"10px",
 
-  fontSize: "18px",
+  fontSize:"18px",
 
-  cursor: "pointer",
+  cursor:"pointer",
 
 };

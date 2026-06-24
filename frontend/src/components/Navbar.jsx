@@ -18,30 +18,59 @@ export default function Navbar() {
 
       style={{
 
-        display: "flex",
+        display:"flex",
 
-        justifyContent: "space-between",
+        flexWrap:"wrap",
 
-        alignItems: "center",
+        justifyContent:"space-between",
 
-        padding: "20px 40px",
+        alignItems:"center",
 
-        background: "#1e293b",
+        gap:"15px",
 
-        color: "#fff",
+        padding:"15px 20px",
+
+        background:"#1e293b",
+
+        color:"#fff",
 
       }}
 
     >
 
-      <h2>
+      <h2
 
-        Lead Management System
+        style={{
+
+          fontSize:"clamp(20px,3vw,30px)",
+
+          margin:0,
+
+        }}
+
+      >
+
+        🚀 Lead Management System
 
       </h2>
 
+      <div
 
-      <div>
+        style={{
+
+          display:"flex",
+
+          flexWrap:"wrap",
+
+          gap:"10px",
+
+          justifyContent:"center",
+
+          alignItems:"center",
+
+        }}
+
+      >
 
         <Link
 
@@ -55,7 +84,6 @@ export default function Navbar() {
 
         </Link>
 
-
         <Link
 
           to="/add-lead"
@@ -67,7 +95,6 @@ export default function Navbar() {
           Add Lead
 
         </Link>
-
 
         <button
 
@@ -89,30 +116,32 @@ export default function Navbar() {
 
 }
 
-
 const linkStyle = {
 
-  color: "#fff",
+  color:"#fff",
 
-  marginRight: "20px",
+  textDecoration:"none",
 
-  textDecoration: "none",
+  padding:"10px 15px",
+
+  borderRadius:"8px",
+
+  background:"#334155",
 
 };
 
-
 const logoutStyle = {
 
-  background: "#dc2626",
+  background:"#dc2626",
 
-  color: "#fff",
+  color:"#fff",
 
-  border: "none",
+  border:"none",
 
-  padding: "10px 15px",
+  padding:"10px 15px",
 
-  borderRadius: "8px",
+  borderRadius:"8px",
 
-  cursor: "pointer",
+  cursor:"pointer",
 
 };

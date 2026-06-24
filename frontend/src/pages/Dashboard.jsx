@@ -5,11 +5,8 @@ import Navbar from "../components/Navbar";
 import LeadTable from "../components/LeadTable";
 
 import {
-
   getLeads,
-
   exportExcel,
-
 } from "../services/api";
 
 export default function Dashboard() {
@@ -50,25 +47,19 @@ export default function Dashboard() {
 
   const newLeads = leads.filter(
 
-    (lead) =>
-
-      lead.status === "New"
+    lead => lead.status === "New"
 
   ).length;
 
   const contactedLeads = leads.filter(
 
-    (lead) =>
-
-      lead.status === "Contacted"
+    lead => lead.status === "Contacted"
 
   ).length;
 
   const convertedLeads = leads.filter(
 
-    (lead) =>
-
-      lead.status === "Converted"
+    lead => lead.status === "Converted"
 
   ).length;
 
@@ -94,7 +85,13 @@ export default function Dashboard() {
 
         style={{
 
-          padding:"30px",
+          width:"100%",
+
+          maxWidth:"1400px",
+
+          margin:"auto",
+
+          padding:"20px",
 
         }}
 
@@ -106,7 +103,7 @@ export default function Dashboard() {
 
             textAlign:"center",
 
-            fontSize:"48px",
+            fontSize:"clamp(28px,5vw,48px)",
 
             marginBottom:"25px",
 
@@ -124,9 +121,11 @@ export default function Dashboard() {
 
             display:"flex",
 
-            justifyContent:
+            flexWrap:"wrap",
 
-            "space-between",
+            gap:"25px",
+
+            justifyContent:"space-between",
 
             alignItems:"center",
 
@@ -136,7 +135,7 @@ export default function Dashboard() {
 
             borderRadius:"25px",
 
-            padding:"35px",
+            padding:"25px",
 
             color:"#fff",
 
@@ -146,7 +145,17 @@ export default function Dashboard() {
 
         >
 
-          <div>
+          <div
+
+            style={{
+
+              flex:"1",
+
+              minWidth:"250px",
+
+            }}
+
+          >
 
             <h2>
 
@@ -182,7 +191,9 @@ export default function Dashboard() {
 
             style={{
 
-              width:"350px",
+              width:"100%",
+
+              maxWidth:"350px",
 
               borderRadius:"25px",
 
@@ -200,9 +211,9 @@ export default function Dashboard() {
 
             gridTemplateColumns:
 
-            "repeat(4,1fr)",
+            "repeat(auto-fit,minmax(220px,1fr))",
 
-            gap:"25px",
+            gap:"20px",
 
           }}
 
@@ -248,11 +259,13 @@ export default function Dashboard() {
 
             background:"#fff",
 
-            marginTop:"40px",
+            marginTop:"35px",
 
-            padding:"30px",
+            padding:"20px",
 
             borderRadius:"25px",
+
+            overflowX:"auto",
 
           }}
 
@@ -273,6 +286,10 @@ export default function Dashboard() {
             onClick={downloadExcel}
 
             style={{
+
+              width:"100%",
+
+              maxWidth:"250px",
 
               padding:"12px",
 
@@ -312,7 +329,7 @@ const cardStyle = {
 
   background:"#fff",
 
-  padding:"30px",
+  padding:"25px",
 
   borderRadius:"25px",
 

@@ -1,22 +1,17 @@
 import { useEffect, useState } from "react";
 
 import {
-
   useNavigate,
-
   useParams,
-
 } from "react-router-dom";
 
 import api from "../services/api";
-
 
 export default function EditLead() {
 
   const navigate = useNavigate();
 
   const { id } = useParams();
-
 
   const [lead, setLead] = useState({
 
@@ -34,13 +29,11 @@ export default function EditLead() {
 
   });
 
-
   useEffect(() => {
 
     loadLead();
 
   }, []);
-
 
   const loadLead = async () => {
 
@@ -68,7 +61,6 @@ export default function EditLead() {
 
   };
 
-
   const handleChange = (e) => {
 
     setLead({
@@ -82,7 +74,6 @@ export default function EditLead() {
     });
 
   };
-
 
   const handleSubmit = async (e) => {
 
@@ -98,13 +89,11 @@ export default function EditLead() {
 
       );
 
-
       alert(
 
         "Lead Updated Successfully"
 
       );
-
 
       navigate(
 
@@ -126,7 +115,6 @@ export default function EditLead() {
 
   };
 
-
   return (
 
     <div
@@ -137,7 +125,7 @@ export default function EditLead() {
 
         background:"#f3f4f6",
 
-        padding:"40px",
+        padding:"20px",
 
       }}
 
@@ -147,13 +135,15 @@ export default function EditLead() {
 
         style={{
 
+          width:"100%",
+
           maxWidth:"700px",
 
           margin:"auto",
 
           background:"#fff",
 
-          padding:"35px",
+          padding:"25px",
 
           borderRadius:"20px",
 
@@ -165,21 +155,25 @@ export default function EditLead() {
 
       >
 
-        <h1>
+        <h1
 
-          Edit Lead
+          style={{
+
+            textAlign:"center",
+
+            fontSize:"clamp(28px,4vw,40px)",
+
+            marginBottom:"25px",
+
+          }}
+
+        >
+
+          ✏️ Edit Lead
 
         </h1>
 
-
-        <br />
-
-
-        <form
-
-          onSubmit={handleSubmit}
-
-        >
+        <form onSubmit={handleSubmit}>
 
           <input
 
@@ -195,7 +189,6 @@ export default function EditLead() {
 
           />
 
-
           <input
 
             name="email"
@@ -209,7 +202,6 @@ export default function EditLead() {
             style={inputStyle}
 
           />
-
 
           <input
 
@@ -225,7 +217,6 @@ export default function EditLead() {
 
           />
 
-
           <input
 
             name="company"
@@ -240,7 +231,6 @@ export default function EditLead() {
 
           />
 
-
           <select
 
             name="status"
@@ -253,28 +243,13 @@ export default function EditLead() {
 
           >
 
-            <option>
+            <option>New</option>
 
-              New
+            <option>Contacted</option>
 
-            </option>
-
-
-            <option>
-
-              Contacted
-
-            </option>
-
-
-            <option>
-
-              Converted
-
-            </option>
+            <option>Converted</option>
 
           </select>
-
 
           <textarea
 
@@ -292,14 +267,13 @@ export default function EditLead() {
 
           />
 
-
           <button
 
             style={buttonStyle}
 
           >
 
-            Update Lead
+            💾 Update Lead
 
           </button>
 
@@ -313,7 +287,6 @@ export default function EditLead() {
 
 }
 
-
 const inputStyle = {
 
   width:"100%",
@@ -326,8 +299,11 @@ const inputStyle = {
 
   borderRadius:"10px",
 
-};
+  fontSize:"16px",
 
+  boxSizing:"border-box",
+
+};
 
 const buttonStyle = {
 
@@ -344,5 +320,7 @@ const buttonStyle = {
   borderRadius:"10px",
 
   cursor:"pointer",
+
+  fontSize:"18px",
 
 };

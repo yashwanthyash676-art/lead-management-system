@@ -22,13 +22,11 @@ export default function LeadTable() {
 
   const [loading, setLoading] = useState(true);
 
-
   useEffect(() => {
 
     loadLeads();
 
   }, []);
-
 
   const loadLeads = async () => {
 
@@ -56,7 +54,6 @@ export default function LeadTable() {
 
   };
 
-
   const deleteLead = async (id) => {
 
     if (
@@ -79,18 +76,13 @@ export default function LeadTable() {
 
       catch (error) {
 
-        alert(
-
-          "Delete failed"
-
-        );
+        alert("Delete failed");
 
       }
 
     }
 
   };
-
 
   const filteredLeads = leads.filter(
 
@@ -140,7 +132,6 @@ export default function LeadTable() {
 
           );
 
-
       const filterMatch =
 
         filter === "All"
@@ -148,7 +139,6 @@ export default function LeadTable() {
         ||
 
         lead.status === filter;
-
 
       return (
 
@@ -164,21 +154,11 @@ export default function LeadTable() {
 
   );
 
-
   if (loading) {
 
-    return (
-
-      <h3>
-
-        Loading...
-
-      </h3>
-
-    );
+    return <h3>Loading...</h3>;
 
   }
-
 
   return (
 
@@ -186,7 +166,7 @@ export default function LeadTable() {
 
       <input
 
-        placeholder="Search Client"
+        placeholder="🔍 Search Client"
 
         value={search}
 
@@ -204,14 +184,9 @@ export default function LeadTable() {
 
       />
 
-
       <div
 
-        style={{
-
-          marginBottom:"20px",
-
-        }}
+        style={filterContainer}
 
       >
 
@@ -231,7 +206,6 @@ export default function LeadTable() {
 
         </button>
 
-
         <button
 
           style={filterButton}
@@ -247,7 +221,6 @@ export default function LeadTable() {
           New
 
         </button>
-
 
         <button
 
@@ -268,7 +241,6 @@ export default function LeadTable() {
           Contacted
 
         </button>
-
 
         <button
 
@@ -292,190 +264,163 @@ export default function LeadTable() {
 
       </div>
 
+      <div
 
-      <table
-
-        style={{
-
-          width:"100%",
-
-          borderCollapse:
-
-          "collapse",
-
-        }}
+        style={tableContainer}
 
       >
 
-        <thead>
+        <table
+
+          style={tableStyle}
+
+        >
+
+          <thead>
+
+            <tr>
+
+              <th>Name</th>
+
+              <th>Email</th>
+
+              <th>Phone</th>
+
+              <th>Company</th>
+
+              <th>Status</th>
+
+              <th>Action</th>
+
+            </tr>
+
+          </thead>
+
+          <tbody>
+
+          {
+
+          filteredLeads.length===0
+
+          ?
+
+          (
 
           <tr>
 
-            <th>Name</th>
+          <td
 
-            <th>Email</th>
+          colSpan="6"
 
-            <th>Phone</th>
+          style={emptyStyle}
 
-            <th>Company</th>
+          >
 
-            <th>Status</th>
+          ❌ No client found
 
-            <th>Action</th>
+          </td>
 
           </tr>
 
-        </thead>
+          )
 
+          :
 
-        <tbody>
+          (
 
-        {
+          filteredLeads.map(
 
-        filteredLeads.length === 0
+          (lead)=>(
 
-        ?
+          <tr
 
-        (
+          key={lead._id}
 
-        <tr>
+          >
 
-        <td
+          <td>{lead.name}</td>
 
-        colSpan="6"
+          <td>{lead.email}</td>
 
-        style={{
+          <td>{lead.phone}</td>
 
-        textAlign:"center",
+          <td>{lead.company}</td>
 
-        padding:"20px",
+          <td>{lead.status}</td>
 
-        color:"red",
+          <td>
 
-        fontWeight:"bold",
+          <div
 
-        fontSize:"18px",
+          style={actionContainer}
 
-        }}
+          >
 
-        >
+          <button
 
-        ❌ Invalid Search - No client found
+          onClick={()=>
 
-        </td>
+          navigate(
 
-        </tr>
+          `/edit-lead/${lead._id}`
 
-        )
+          )
 
-        :
+          }
 
-        (
+          style={editButton}
 
-        filteredLeads.map(
+          >
 
-        (lead)=>(
+          Edit
 
-        <tr
+          </button>
 
-        key={lead._id}
+          <button
 
-        >
+          onClick={()=>
 
-        <td>
+          deleteLead(
 
-        {lead.name}
+          lead._id
 
-        </td>
+          )
 
-        <td>
+          }
 
-        {lead.email}
+          style={deleteButton}
 
-        </td>
+          >
 
-        <td>
+          Delete
 
-        {lead.phone}
+          </button>
 
-        </td>
+          </div>
 
-        <td>
+          </td>
 
-        {lead.company}
+          </tr>
 
-        </td>
+          )
 
-        <td>
+          )
 
-        {lead.status}
+          )
 
-        </td>
+          }
 
-        <td>
+          </tbody>
 
-        <button
+        </table>
 
-        onClick={()=>
-
-        navigate(
-
-        `/edit-lead/${lead._id}`
-
-        )
-
-        }
-
-        style={editButton}
-
-        >
-
-        Edit
-
-        </button>
-
-        <button
-
-        onClick={()=>
-
-        deleteLead(
-
-        lead._id
-
-        )
-
-        }
-
-        style={deleteButton}
-
-        >
-
-        Delete
-
-        </button>
-
-        </td>
-
-        </tr>
-
-        )
-
-        )
-
-        )
-
-        }
-
-        </tbody>
-
-      </table>
+      </div>
 
     </div>
 
   );
 
 }
-
 
 const inputStyle = {
 
@@ -489,14 +434,29 @@ const inputStyle = {
 
   border:"1px solid #ccc",
 
+  boxSizing:"border-box",
+
 };
 
+const filterContainer = {
+
+  display:"flex",
+
+  flexWrap:"wrap",
+
+  gap:"10px",
+
+  marginBottom:"20px",
+
+};
 
 const filterButton = {
 
-  padding:"10px 15px",
+  flex:"1",
 
-  marginRight:"10px",
+  minWidth:"120px",
+
+  padding:"10px",
 
   border:"none",
 
@@ -510,6 +470,29 @@ const filterButton = {
 
 };
 
+const tableContainer = {
+
+  overflowX:"auto",
+
+};
+
+const tableStyle = {
+
+  width:"100%",
+
+  borderCollapse:"collapse",
+
+};
+
+const actionContainer = {
+
+  display:"flex",
+
+  flexWrap:"wrap",
+
+  gap:"10px",
+
+};
 
 const editButton = {
 
@@ -523,12 +506,9 @@ const editButton = {
 
   borderRadius:"8px",
 
-  marginRight:"10px",
-
   cursor:"pointer",
 
 };
-
 
 const deleteButton = {
 
@@ -543,5 +523,17 @@ const deleteButton = {
   borderRadius:"8px",
 
   cursor:"pointer",
+
+};
+
+const emptyStyle = {
+
+  textAlign:"center",
+
+  padding:"20px",
+
+  color:"red",
+
+  fontWeight:"bold",
 
 };
