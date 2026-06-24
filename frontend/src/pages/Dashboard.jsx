@@ -50,25 +50,19 @@ export default function Dashboard() {
 
   const newLeads = leads.filter(
 
-    (lead) =>
-
-      lead.status === "New"
+    lead => lead.status === "New"
 
   ).length;
 
   const contactedLeads = leads.filter(
 
-    (lead) =>
-
-      lead.status === "Contacted"
+    lead => lead.status === "Contacted"
 
   ).length;
 
   const convertedLeads = leads.filter(
 
-    (lead) =>
-
-      lead.status === "Converted"
+    lead => lead.status === "Converted"
 
   ).length;
 
@@ -96,7 +90,7 @@ export default function Dashboard() {
 
           width:"100%",
 
-          maxWidth:"1400px",
+          maxWidth:"1200px",
 
           margin:"auto",
 
@@ -112,7 +106,7 @@ export default function Dashboard() {
 
             textAlign:"center",
 
-            fontSize:"clamp(30px,5vw,48px)",
+            fontSize:"clamp(28px,5vw,42px)",
 
             lineHeight:"1.1",
 
@@ -122,7 +116,7 @@ export default function Dashboard() {
 
         >
 
-          🚀 Akar LeadMaster Pro CRM
+          🚀 Akar CRM
 
         </h1>
 
@@ -202,7 +196,7 @@ export default function Dashboard() {
 
               width:"100%",
 
-              maxWidth:"350px",
+              maxWidth:"300px",
 
               margin:"auto",
 
@@ -232,65 +226,33 @@ export default function Dashboard() {
 
           <div style={cardStyle}>
 
-            <h3>
+            <h3>📋 Total Leads</h3>
 
-              📋 Total Leads
-
-            </h3>
-
-            <h1>
-
-              {totalLeads}
-
-            </h1>
+            <h1>{totalLeads}</h1>
 
           </div>
 
           <div style={cardStyle}>
 
-            <h3>
+            <h3>🆕 New Leads</h3>
 
-              🆕 New Leads
-
-            </h3>
-
-            <h1>
-
-              {newLeads}
-
-            </h1>
+            <h1>{newLeads}</h1>
 
           </div>
 
           <div style={cardStyle}>
 
-            <h3>
+            <h3>📞 Contacted</h3>
 
-              📞 Contacted
-
-            </h3>
-
-            <h1>
-
-              {contactedLeads}
-
-            </h1>
+            <h1>{contactedLeads}</h1>
 
           </div>
 
           <div style={cardStyle}>
 
-            <h3>
+            <h3>🎯 Converted</h3>
 
-              🎯 Converted
-
-            </h3>
-
-            <h1>
-
-              {convertedLeads}
-
-            </h1>
+            <h1>{convertedLeads}</h1>
 
           </div>
 
@@ -307,8 +269,6 @@ export default function Dashboard() {
             padding:"20px",
 
             borderRadius:"25px",
-
-            overflowX:"auto",
 
           }}
 
@@ -374,7 +334,7 @@ const cardStyle = {
 
   padding:"20px",
 
-  minHeight:"160px",
+  minHeight:"150px",
 
   borderRadius:"20px",
 
